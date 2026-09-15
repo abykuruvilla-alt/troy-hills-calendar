@@ -1,115 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Troy Hills Elementary Calendar</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<title>Troy Hills Elementary Calendar</title>
 
-    body {
-      margin: 0;
-      padding: 25px;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f3f7f4;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color: #1d1d1f;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .card {
-      width: 100%;
-      max-width: 520px;
-      background: white;
-      border-radius: 24px;
-      padding: 38px 28px;
-      text-align: center;
-      box-shadow: 0 10px 35px rgba(0,0,0,.10);
-    }
+body {
+  margin: 0;
+  padding: 24px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f7f4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  color: #1d1d1f;
+}
 
-    .calendar-icon {
-      font-size: 58px;
-      margin-bottom: 10px;
-    }
+.card {
+  width: 100%;
+  max-width: 540px;
+  background: white;
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(0,0,0,.10);
+}
 
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.15;
-    }
+.icon {
+  font-size: 58px;
+  margin-bottom: 10px;
+}
 
-    h2 {
-      margin: 10px 0 28px;
-      font-size: 20px;
-      font-weight: 500;
-      color: #666;
-    }
+h1 {
+  margin: 0;
+  font-size: 30px;
+  line-height: 1.15;
+}
 
-    .button {
-      display: block;
-      background: #1677ff;
-      color: white;
-      text-decoration: none;
-      font-size: 19px;
-      font-weight: 700;
-      padding: 17px 20px;
-      border-radius: 14px;
-      margin: 15px 0 22px;
-    }
+h2 {
+  margin: 10px 0 25px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #666;
+}
 
-    .info {
-      font-size: 15px;
-      line-height: 1.55;
-      color: #555;
-    }
+.button {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 17px 18px;
+  border-radius: 14px;
+  margin: 12px 0;
+}
 
-    .small {
-      margin-top: 25px;
-      font-size: 13px;
-      color: #888;
-    }
-  </style>
+.apple {
+  background: #1677ff;
+}
+
+.download {
+  background: #555;
+}
+
+.android {
+  margin: 22px 0;
+  padding: 20px;
+  background: #f5f7f6;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.android h3 {
+  margin-top: 0;
+  text-align: center;
+  font-size: 19px;
+}
+
+.android ol {
+  padding-left: 22px;
+  line-height: 1.55;
+}
+
+.feed {
+  overflow-wrap: anywhere;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  user-select: all;
+}
+
+.info {
+  font-size: 15px;
+  line-height: 1.55;
+  color: #555;
+  margin-top: 22px;
+}
+
+.disclaimer {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #ddd;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #777;
+}
+
+.disclaimer strong {
+  color: #555;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
+<div class="card">
 
-    <div class="calendar-icon">📅</div>
+  <div class="icon">📅</div>
 
-    <h1>Troy Hills Elementary</h1>
+  <h1>Troy Hills Elementary</h1>
+  <h2>2026–2027 School Calendar</h2>
 
-    <h2>2026–2027 School Calendar</h2>
+  <a class="button apple"
+     href="webcal://abykuruvilla-alt.github.io/troy-hills-calendar/Troy_Hills_Elementary_2026-2027_Calendar.ics">
+     🍎 Add to Apple Calendar
+  </a>
 
-    <a class="button"
-       href="webcal://abykuruvilla-alt.github.io/troy-hills-calendar/Troy_Hills_Elementary_2026-2027_Calendar.ics">
-       Add to Apple Calendar
-    </a>
+  <div class="android">
 
-    <div class="info">
-      Includes school closings and half days for
-      Troy Hills Elementary.
-      <br><br>
-      Calendar events include notes explaining the
-      holiday, school closing, conference, or reason
-      for the half day.
-      <br><br>
-      <strong>This is a subscribed calendar.</strong>
-      Updates made to the school calendar may
-      automatically appear on subscribed devices.
+    <h3>🤖 Android / Google Calendar</h3>
+
+    <p>
+      To receive calendar updates, subscribe using Google Calendar on a computer:
+    </p>
+
+    <ol>
+      <li>Open Google Calendar.</li>
+      <li>Next to <strong>Other calendars</strong>, click <strong>+</strong>.</li>
+      <li>Select <strong>From URL</strong>.</li>
+      <li>Copy and paste the calendar address below.</li>
+      <li>Click <strong>Add calendar</strong>.</li>
+    </ol>
+
+    <div class="feed">
+      https://abykuruvilla-alt.github.io/troy-hills-calendar/Troy_Hills_Elementary_2026-2027_Calendar.ics
     </div>
 
-    <div class="small">
-      Based on the Parsippany-Troy Hills Township Schools
-      2026–2027 District Calendar.
-    </div>
+    <p style="font-size:13px; color:#777; margin-bottom:0;">
+      Once added to Google Calendar, it will also appear in the Google Calendar app on Android devices using the same Google account.
+    </p>
 
   </div>
+
+  <a class="button download"
+     href="Troy_Hills_Elementary_2026-2027_Calendar.ics">
+     📥 Download Calendar File
+  </a>
+
+  <div class="info">
+    Includes Troy Hills Elementary school closings and half days.
+    <br><br>
+    Events include notes explaining holidays, school closings,
+    parent/teacher conferences, professional development days,
+    and the reason for applicable half days.
+    <br><br>
+    <strong>Subscribed calendars can receive updates when this calendar is updated.</strong>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Unofficial Parent Calendar</strong>
+    <br><br>
+    This calendar is provided for convenience and is based on the
+    Parsippany-Troy Hills Township Schools 2026–2027 District Calendar.
+    It is not an official calendar published or maintained by
+    Troy Hills Elementary School or the Parsippany-Troy Hills Township
+    School District.
+    <br><br>
+    Always verify schedule changes, emergency closings, and other
+    updates with the school district.
+  </div>
+
+</div>
 
 </body>
 </html>
