@@ -86,6 +86,7 @@
       font-weight: 700;
       cursor: pointer;
       border: none;
+      font-family: inherit;
     }
 
     .apple {
@@ -126,11 +127,30 @@
       background: white;
       border-radius: 10px;
       padding: 14px;
-      margin: 14px 0;
+      margin: 14px 0 10px;
       font-size: 12px;
       line-height: 1.4;
       overflow-wrap: anywhere;
       user-select: all;
+    }
+
+    .copy-button {
+      display: block;
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 13px 12px;
+      margin: 10px 0 18px;
+      background: #1d1d1f;
+      color: white;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .copy-button:active {
+      transform: scale(.98);
     }
 
     .description {
@@ -228,9 +248,17 @@
         <li>Click <strong>Add calendar</strong>.</li>
       </ol>
 
-      <div class="feed">
+      <div class="feed" id="calendarFeed">
         https://abykuruvilla-alt.github.io/troy-hills-calendar/Troy_Hills_Elementary_2026-2027_Calendar.ics
       </div>
+
+      <button
+        class="copy-button"
+        id="copyButton"
+        type="button"
+        onclick="copyCalendarLink()">
+        📋 Copy Subscription Link
+      </button>
 
       <p>
         Once subscribed, the calendar will also appear in the Google Calendar
@@ -273,6 +301,9 @@
   </div>
 
   <script>
+    const calendarURL =
+      "https://abykuruvilla-alt.github.io/troy-hills-calendar/Troy_Hills_Elementary_2026-2027_Calendar.ics";
+
     function toggleGoogle() {
       const section = document.getElementById("googleInstructions");
 
@@ -280,10 +311,44 @@
         section.style.display = "none";
       } else {
         section.style.display = "block";
+
         section.scrollIntoView({
           behavior: "smooth",
           block: "nearest"
         });
+      }
+    }
+
+    async function copyCalendarLink() {
+      const button = document.getElementById("copyButton");
+
+      try {
+        await navigator.clipboard.writeText(calendarURL);
+
+        button.textContent = "✓ Link Copied!";
+
+        setTimeout(() => {
+          button.textContent = "📋 Copy Subscription Link";
+        }, 2000);
+
+      } catch (error) {
+        const textArea = document.createElement("textarea");
+        textArea.value = calendarURL;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+
+        button.textContent = "✓ Link Copied!";
+
+        setTimeout(() => {
+          button.textContent = "📋 Copy Subscription Link";
+        }, 2000);
       }
     }
   </script>
