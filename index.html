@@ -114,8 +114,14 @@
 
     .android h3 {
       text-align: center;
-      margin: 0 0 18px;
+      margin: 0 0 12px;
       font-size: 18px;
+    }
+
+    .android .intro {
+      text-align: center;
+      margin: 0 0 18px;
+      color: #555;
     }
 
     .android ol {
@@ -134,23 +140,42 @@
       user-select: all;
     }
 
-    .copy-button {
+    .copy-button,
+    .open-google-button {
       display: block;
       width: 100%;
       border: none;
       border-radius: 10px;
       padding: 13px 12px;
-      margin: 10px 0 18px;
-      background: #1d1d1f;
-      color: white;
+      margin: 10px 0;
       font-family: inherit;
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
+      text-align: center;
+      text-decoration: none;
     }
 
-    .copy-button:active {
+    .copy-button {
+      background: #1d1d1f;
+      color: white;
+    }
+
+    .open-google-button {
+      background: #34a853;
+      color: white;
+      margin-bottom: 18px;
+    }
+
+    .copy-button:active,
+    .open-google-button:active {
       transform: scale(.98);
+    }
+
+    .android-note {
+      margin-bottom: 0;
+      font-size: 14px;
+      color: #555;
     }
 
     .description {
@@ -179,6 +204,7 @@
     @media (max-width: 600px) {
       body {
         padding: 18px;
+        align-items: flex-start;
       }
 
       .card {
@@ -235,16 +261,18 @@
 
       <h3>🤖 Google Calendar / Android</h3>
 
-      <p>
-        To subscribe and receive future calendar updates:
+      <p class="intro">
+        Google Calendar requires the subscription to be added through its
+        web version. You only need to do this once.
       </p>
 
       <ol>
-        <li>Open Google Calendar on a computer.</li>
-        <li>Next to <strong>Other calendars</strong>, click <strong>+</strong>.</li>
+        <li>Tap <strong>Copy Subscription Link</strong> below.</li>
+        <li>Tap <strong>Open Google Calendar</strong>.</li>
+        <li>If you're on a phone, choose the desktop version of the site if needed.</li>
+        <li>Find <strong>Other calendars</strong> and click <strong>+</strong>.</li>
         <li>Select <strong>From URL</strong>.</li>
-        <li>Copy the calendar address below.</li>
-        <li>Paste it into Google Calendar.</li>
+        <li>Paste the subscription link.</li>
         <li>Click <strong>Add calendar</strong>.</li>
       </ol>
 
@@ -260,9 +288,18 @@
         📋 Copy Subscription Link
       </button>
 
-      <p>
-        Once subscribed, the calendar will also appear in the Google Calendar
-        app on Android devices signed into the same Google account.
+      <a
+        class="open-google-button"
+        href="https://calendar.google.com/calendar/u/0/r/settings/addbyurl"
+        target="_blank"
+        rel="noopener noreferrer">
+        📅 Open Google Calendar
+      </a>
+
+      <p class="android-note">
+        Once subscribed, the Troy Hills calendar will appear in Google Calendar
+        on devices signed into the same Google account, including Android phones.
+        Future changes to this subscribed calendar can then be received automatically.
       </p>
 
     </div>
@@ -312,10 +349,12 @@
       } else {
         section.style.display = "block";
 
-        section.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest"
-        });
+        setTimeout(() => {
+          section.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest"
+          });
+        }, 100);
       }
     }
 
@@ -324,32 +363,33 @@
 
       try {
         await navigator.clipboard.writeText(calendarURL);
-
-        button.textContent = "✓ Link Copied!";
-
-        setTimeout(() => {
-          button.textContent = "📋 Copy Subscription Link";
-        }, 2000);
-
+        showCopied(button);
       } catch (error) {
         const textArea = document.createElement("textarea");
+
         textArea.value = calendarURL;
         textArea.style.position = "fixed";
         textArea.style.opacity = "0";
 
         document.body.appendChild(textArea);
+
         textArea.focus();
         textArea.select();
 
         document.execCommand("copy");
+
         document.body.removeChild(textArea);
 
-        button.textContent = "✓ Link Copied!";
-
-        setTimeout(() => {
-          button.textContent = "📋 Copy Subscription Link";
-        }, 2000);
+        showCopied(button);
       }
+    }
+
+    function showCopied(button) {
+      button.textContent = "✓ Subscription Link Copied!";
+
+      setTimeout(() => {
+        button.textContent = "📋 Copy Subscription Link";
+      }, 2500);
     }
   </script>
 
